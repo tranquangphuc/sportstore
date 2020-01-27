@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DataTypes from './Types';
+import { DataTypes } from './Types';
 
 export class DataGetter extends Component {
   render() {
