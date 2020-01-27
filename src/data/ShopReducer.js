@@ -9,6 +9,10 @@ export const ShopReducer = (storeData, action) => {
         [`${action.payload.dataType}_total`]: action.payload.total,
         [`${action.payload.dataType}_params`]: action.payload.params
       };
+    case ActionTypes.DATA_SET_SIZE:
+      return { ...storeData, pageSize: action.payload };
+    case ActionTypes.DATA_SET_SORT:
+      return { ...storeData, sortKey: action.payload };
     default:
       return storeData || {};
   }
