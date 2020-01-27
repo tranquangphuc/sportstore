@@ -1,0 +1,41 @@
+type product {
+  id: ID!
+  name: String!
+  description: String!
+  category: String!
+  price: Float!
+}
+type productPage {
+  totalSize: Int!
+  products(sort: String, page: Int!, pageSize: Int!): [product]
+}
+type orderedProduct {
+  product: product
+  quantity: Int!
+}
+type order {
+  id: Int!
+  name: String!
+  email: String!
+  address: String!
+  city: String!
+  country: String!
+  zip: String!
+  shipped: Boolean
+  products: [orderedProduct]
+}
+type orderPage {
+  totalSize: Int
+  orders(sort: String, page: Int!, pageSize: Int!): [order]
+}
+type Query {
+  product(id: ID!): product
+  products(
+    category: String
+    sort: String
+    page: Int
+    pageSize: Int
+  ): productPage
+  categories: [String]
+  orders(onlyUnshipped: Boolean): orderPage
+}
