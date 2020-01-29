@@ -5,29 +5,34 @@ type product {
   category: String!
   price: Float!
 }
+
 type productPage {
   totalSize: Int!
-  products(sort: String, page: Int!, pageSize: Int!): [product]
+  products(sort: String, page: Int, pageSize: Int): [product]
 }
-type orderedProduct {
-  product: product
-  quantity: Int!
+
+type orderPage {
+  totalSize: Int
+  orders(sort: String, page: Int, pageSize: Int): [order]
 }
+
 type order {
-  id: Int!
+  id: ID!
   name: String!
   email: String!
   address: String!
   city: String!
-  country: String!
   zip: String!
+  country: String!
   shipped: Boolean
-  products: [orderedProduct]
+  products: [productSelection]
 }
-type orderPage {
-  totalSize: Int
-  orders(sort: String, page: Int!, pageSize: Int!): [order]
+
+type productSelection {
+  quantity: Int!
+  product: product
 }
+
 type Query {
   product(id: ID!): product
   products(
