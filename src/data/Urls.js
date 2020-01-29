@@ -11,3 +11,5 @@ export const RestUrls = {
   [DataTypes.CATEGORIES]: `${baseUrl}/api/categories`,
   [DataTypes.ORDERS]: `${baseUrl}/api/orders`
 };
+
+export const GraphQlUrl = `${baseUrl}/graphql`;
